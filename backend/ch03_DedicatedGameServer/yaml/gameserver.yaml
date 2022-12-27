@@ -1,0 +1,21 @@
+apiVersion: "agones.dev/v1"
+kind: GameServer
+metadata:
+  generateName: "mygame-server-"
+spec:
+  ports:
+    - name: default
+      portPolicy: Dynamic
+      containerPort: 7777
+  template:
+    spec:
+      containers:
+        - name: mygame-server
+          image: agonesacr.azurecr.io/mygame-server:0.1
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "128m"
+            limits:
+              memory: "128Mi"
+              cpu: "128m"
